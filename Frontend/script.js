@@ -2,7 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('#login-form form');
     const registerForm = document.querySelector('#register-form form');
 
-    if (loginForm) {
+    if (!loginForm) {
+        console.error('Elemento do formulário de login não encontrado!');
+    } else {
         loginForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -36,7 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
-    if (registerForm) {
+    if (!registerForm) {
+        console.error('Elemento do formulário de registro não encontrado!');
+    } else {
         registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
