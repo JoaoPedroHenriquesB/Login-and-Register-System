@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Login e Registro</title>
+    <link rel="stylesheet" href="/Frontend/style.css">
+    <script type="module" src="/Frontend/script.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div id="login-form">
+            <h2>Login</h2>
+            <form>
+                <input id="login_user" type="text" placeholder="Usuário" required>
+                <input id="login_pass" type="password" placeholder="Senha" required>
+                <button id="login_btn" type="submit">Entrar</button>
+            </form>
+            <div class="toggle-link" onclick="showRegister()">Não tem conta? Registre-se</div>
+        </div>
+        <div id="register-form" style="display:none;">
+            <h2>Registro</h2>
+            <form>
+                <input id="register_user" type="text" placeholder="Usuário" required>
+                <input id="register_email" type="email" placeholder="Email" required>
+                <input id="register_pass" type="password" placeholder="Senha" required>
+                <button id="register_btn" type="submit">Registrar</button>
+            </form>
+            <div class="toggle-link" onclick="showLogin()">Já tem conta? Faça login</div>
+        </div>
+    </div>
+    <script>
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+        function showLogin() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
