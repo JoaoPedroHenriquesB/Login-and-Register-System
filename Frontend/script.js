@@ -5,7 +5,7 @@ document.querySelector('#login-form form').addEventListener('submit', async (e) 
     const login_pass = document.getElementById('login_pass').value;
 
     try {
-        const response = await fetch('http://localhost:3001/auth/login',{
+        const response = await fetch('https://login-and-register-api-ugz9.onrender.com/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',       
@@ -38,9 +38,8 @@ document.querySelector('#register-form form').addEventListener('submit', async (
     const register_pass = document.getElementById('register_pass').value;
 
     try {
-        const response = await fetch('http://localhost:3001/auth/register', {
-
-             method: 'POST',
+        const response = await fetch('https://login-and-register-api-ugz9.onrender.com/auth/register', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -51,9 +50,9 @@ document.querySelector('#register-form form').addEventListener('submit', async (
             })
         });
    
-        const login = await response.json();
+        const register = await response.json();
 
-        if (register.sucess) {
+        if (response.ok) {
             alert('Conta Registrada!')
         } else {
             alert(register.message + (register.error ? ': ' + register.error.sqlMessage : ''));
