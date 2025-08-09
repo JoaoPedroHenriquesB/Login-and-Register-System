@@ -236,10 +236,9 @@ Contribuições que melhorem o valor educacional são bem-vindas!
 ## 👨‍💻 **Autor**
 
 **João Pedro Henriques**
-- 🐙 GitHub: [@JoaoPedroHenriquesB](https://github.com/JoaoPedroHenriquesB)
-- 💼 LinkedIn: [Seu LinkedIn](https://linkedin.com/in/seu-perfil)
-- 📧 Email: [Seu Email](mailto:seu-email@exemplo.com)
-
+- 🐙 GitHub: https://github.com/JoaoPedroHenriquesB
+- 💼 LinkedIn: https://www.linkedin.com/in/joaopedrohb/
+- 📧 Email: joaopedrohbalbino@gmail.com
 ---
 
 ## 📄 **Licença**
