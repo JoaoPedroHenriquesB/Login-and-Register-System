@@ -8,13 +8,3 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: DB_URL
-        fromDatabase:
-          name: login-db
-          property: connectionString
-
-databases:
-  - name: login-db
-    databaseName: login_register
-    user: login_user
-    plan: free

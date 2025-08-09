@@ -44,6 +44,7 @@ jspm_packages/
 # .env
 
 # IDE files
+.vscode
 .vscode/
 .idea/
 *.swp

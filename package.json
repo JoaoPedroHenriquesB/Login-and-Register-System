@@ -1,7 +1,7 @@
 {
   "name": "sistema-de-login",
   "version": "1.0.0",
-  "description": "Sistema de login e registro com Node.js e PostgreSQL",
+  "description": "Sistema completo de autenticação web para fins educacionais. Frontend em HTML/CSS/JS hospedado no GitHub Pages, backend Node.js/Express no Render com PostgreSQL. Inclui registro seguro, login com hash bcrypt, validação de dados e deploy automatizado.",
   "main": "Backend/server.js",
   "scripts": {
     "start": "node Backend/server.js",
@@ -22,8 +22,24 @@
     "pg": "^8.16.3"
   },
   "devDependencies": {},
-  "keywords": ["login", "register", "nodejs", "express", "postgresql"],
-  "author": "",
+  "keywords": [
+    "login",
+    "register", 
+    "authentication",
+    "nodejs",
+    "express",
+    "postgresql",
+    "mysql",
+    "bcrypt",
+    "cors",
+    "full-stack",
+    "educational",
+    "study-project",
+    "github-pages",
+    "render",
+    "rest-api"
+  ],
+  "author": "João Pedro Henriques",
   "license": "ISC",
   "repository": {
     "type": "git",

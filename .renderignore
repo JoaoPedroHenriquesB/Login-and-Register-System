@@ -1,0 +1,10 @@
+# Arquivos para ignorar no deploy do Render
+.env
+.vscode/
+.qodo/
+node_modules/
+*.log
+README_FIXES.md
+DEPLOY_RENDER.md
+FIX_RENDER_ERROR.md
+DESCRICAO_PROJETO.md
