@@ -1,16 +1,22 @@
-// Detectar ambiente baseado na presença da variável DB_URL (PostgreSQL do Render)
-const isProduction = !!process.env.DB_URL;
+
+const isProduction = process.env.NODE_ENV === 'production' || !!process.env.DB_URL;
 
 console.log('🔍 Detectando ambiente...');
 console.log('NODE_ENV:', process.env.NODE_ENV);
 console.log('DB_URL presente:', !!process.env.DB_URL);
+console.log('DB_URL valor:', process.env.DB_URL ? 'CONFIGURADO' : 'NÃO CONFIGURADO');
 console.log('Ambiente detectado:', isProduction ? 'PRODUÇÃO (PostgreSQL)' : 'DESENVOLVIMENTO (MySQL)');
 
 let db;
 
 if (isProduction) {
-    // ===== PRODUÇÃO: PostgreSQL (Render) =====
     console.log('🐘 Configurando PostgreSQL para produção...');
+    
+    if (!process.env.DB_URL) {
+        console.error('❌ ERRO: DB_URL não configurado no ambiente de produção!');
+        console.error('Configure a variável DB_URL no Render com a URL do PostgreSQL');
+        process.exit(1);
+    }
     
     const { Pool } = require('pg');
     
@@ -21,8 +27,7 @@ if (isProduction) {
         }
     });
     
-    // Teste de conexão PostgreSQL
-    db.connect()
+    db.query('SELECT NOW()')
         .then(() => {
             console.log('✅ Conectado ao banco de dados PostgreSQL');
         })
@@ -31,10 +36,9 @@ if (isProduction) {
         });
         
 } else {
-    // ===== DESENVOLVIMENTO: MySQL (Local) =====
     console.log('🐬 Configurando MySQL para desenvolvimento local...');
     
-    const mysql = require('mysql2/promise'); // Usar versão promise
+    const mysql = require('mysql2/promise');
     
     db = mysql.createConnection({
         host: process.env.DB_HOST || 'localhost',
@@ -43,7 +47,6 @@ if (isProduction) {
         database: process.env.DB_NAME || 'login_register'
     });
 
-    // Teste de conexão MySQL
     db.connect()
         .then(() => {
             console.log('✅ Conectado ao banco de dados MySQL');

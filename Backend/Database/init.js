@@ -1,11 +1,12 @@
 const db = require('./db');
 
 const initDatabase = async () => {
-    // Usar a mesma lógica de detecção do db.js
-    const isProduction = !!process.env.DB_URL;
+    const isProduction = process.env.NODE_ENV === 'production' || !!process.env.DB_URL;
     
     console.log('🔧 Inicializando banco de dados...');
     console.log('Ambiente:', isProduction ? 'PRODUÇÃO (PostgreSQL)' : 'DESENVOLVIMENTO (MySQL)');
+    
+    await new Promise(resolve => setTimeout(resolve, 2000));
     
     try {
         if (isProduction) {
@@ -46,6 +47,9 @@ const initDatabase = async () => {
     } catch (error) {
         console.error('❌ Erro ao inicializar banco de dados:', error.message);
         console.error('Stack trace:', error.stack);
+        
+        // Não parar o servidor se a tabela não puder ser criada
+        console.log('⚠️ Continuando sem inicialização do banco...');
     }
 };
 

@@ -3,8 +3,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../Database/db');
 const router = express.Router();
 
-// Usar a mesma lógica de detecção dos outros arquivos
-const isPostgreSQL = !!process.env.DB_URL;
+const isPostgreSQL = process.env.NODE_ENV === 'production' || !!process.env.DB_URL;
 
 console.log('🔍 Auth routes - Ambiente detectado:', isPostgreSQL ? 'PostgreSQL' : 'MySQL');
 
@@ -37,7 +36,6 @@ router.post('/register', async (req, res) => {
     } catch (err) {
         console.error('❌ Erro ao registrar:', err.message);
         
-        // Tratar erro de usuário duplicado
         if (err.code === '23505' || err.code === 'ER_DUP_ENTRY') {
             return res.status(400).json({message: 'Usuário ou email já existe'});
         }
