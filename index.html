@@ -11,6 +11,18 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
 </head>
 <body>
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <div class="notification-icon">
+                <span id="notification-icon">✓</span>
+            </div>
+            <div class="notification-text">
+                <span id="notification-message">Mensagem</span>
+            </div>
+            <button class="notification-close" onclick="closeNotification()">×</button>
+        </div>
+    </div>
+
     <div class="container">
         <div id="login-form">
             <h2>Login</h2>
@@ -73,6 +85,37 @@
                 input.type = 'password';
                 eyeIcon.textContent = '👁️';
             }
+        }
+
+        // Sistema de Notificações
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const messageElement = document.getElementById('notification-message');
+            const iconElement = document.getElementById('notification-icon');
+            
+            messageElement.textContent = message;
+            
+            // Define ícone e classe baseado no tipo
+            if (type === 'success') {
+                iconElement.textContent = '✓';
+                notification.className = 'notification show success';
+            } else if (type === 'error') {
+                iconElement.textContent = '✕';
+                notification.className = 'notification show error';
+            } else if (type === 'info') {
+                iconElement.textContent = 'ℹ';
+                notification.className = 'notification show info';
+            }
+            
+            // Auto-fechar após 5 segundos
+            setTimeout(() => {
+                closeNotification();
+            }, 5000);
+        }
+
+        function closeNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('show');
         }
     </script>
     <script src="Frontend/script.js"></script>

@@ -26,14 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const login = await response.json();
 
                 if (response.ok) {
-                    alert(login.message || 'Login bem-sucedido!')
-                    window.location.href = 'https://github.com/JoaoPedroHenriquesB';
+                    showNotification(login.message || 'Login realizado com sucesso!', 'success');
+                    setTimeout(() => {
+                        window.location.href = 'https://github.com/JoaoPedroHenriquesB';
+                    }, 2000);
                 } else {
-                    alert(login.message || 'Usuário ou senha incorretos!');  
+                    showNotification(login.message || 'Usuário ou senha incorretos!', 'error');  
                 }
             } catch (error) {
                 console.error('Erro:', error);
-                alert('Erro ao conectar ao servidor')
+                showNotification('Erro ao conectar ao servidor', 'error');
             }
         })
     }
@@ -64,14 +66,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const register = await response.json();
 
                 if (response.ok) {
-                    alert('Conta Registrada!')
+                    showNotification('Conta registrada com sucesso!', 'success');
                 } else {
-                    alert(register.message + (register.error ? ': ' + register.error.sqlMessage : ''));
+                    showNotification(register.message + (register.error ? ': ' + register.error.sqlMessage : ''), 'error');
                 }
 
             } catch (error) {
                 console.error(error)
-                alert('Algo Deu Errado!, Tente Novamente Mais Tarde.')
+                showNotification('Algo deu errado! Tente novamente mais tarde.', 'error');
             }
         });
     }
