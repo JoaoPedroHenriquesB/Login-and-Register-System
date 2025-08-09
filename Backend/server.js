@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
+const adminRoutes = require('./routes/admin');
 const cors = require('cors');
 const initDatabase = require('./Database/init');
 
@@ -23,6 +24,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
+app.use('/admin', adminRoutes);
 
 app.get('/', (req, res) => {
     res.json({ 
