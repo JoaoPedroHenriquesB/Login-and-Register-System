@@ -235,7 +235,7 @@ Contribuições que melhorem o valor educacional são bem-vindas!
 
 ## 👨‍💻 **Autor**
 
-**João Pedro Henriques**
+**João Pedro Henriques Balbino**
 - 🐙 GitHub: https://github.com/JoaoPedroHenriquesB
 - 💼 LinkedIn: https://www.linkedin.com/in/joaopedrohb/
 - 📧 Email: joaopedrohbalbino@gmail.com
@@ -263,11 +263,3 @@ educational purposes is hereby granted, free of charge.
 *Desenvolvido com 💙 para a comunidade de desenvolvedores em aprendizado*
 
 ---
-
-**🎓 Bons estudos e happy coding! 🚀**
-
-<<<<<<< HEAD
-</div>
-=======
-</div>
->>>>>>> 38578eedcd8e7ecccfe0f09d5b1abd90e5a023f4
