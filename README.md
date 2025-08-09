@@ -267,4 +267,8 @@ educational purposes is hereby granted, free of charge.
 
 **🎓 Bons estudos e happy coding! 🚀**
 
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> 38578eedcd8e7ecccfe0f09d5b1abd90e5a023f4
