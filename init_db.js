@@ -15,7 +15,7 @@ async function configureDatabase() {
       password VARCHAR(255) NOT NULL
     )
   `);
-  console.log("✅ Tabela 'users' criada!");
+  console.log(" Tabela 'users' criada!");
   client.release();
   await pool.end();
 }
