@@ -1,4 +1,18 @@
 {
+  "name": "sistema-de-login",
+  "version": "1.0.0",
+  "description": "Sistema de login e registro com Node.js e PostgreSQL",
+  "main": "Backend/server.js",
+  "scripts": {
+    "start": "node Backend/server.js",
+    "dev": "node Backend/server.js",
+    "build": "echo 'No build step required'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
   "dependencies": {
     "bcryptjs": "^3.0.2",
     "body-parser": "^2.2.0",
@@ -7,17 +21,10 @@
     "mysql2": "^3.14.2",
     "pg": "^8.16.3"
   },
-  "name": "sistema-de-login",
-  "version": "1.0.0",
-  "main": "backend/server.js",
-  "scripts": {
-    "start": "node ./backend/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "devDependencies": {},
+  "keywords": ["login", "register", "nodejs", "express", "postgresql"],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/JoaoPedroHenriquesB/Login-and-Register-System.git"
@@ -25,6 +32,5 @@
   "bugs": {
     "url": "https://github.com/JoaoPedroHenriquesB/Login-and-Register-System/issues"
   },
-  "homepage": "https://github.com/JoaoPedroHenriquesB/Login-and-Register-System#readme",
-  "description": ""
+  "homepage": "https://github.com/JoaoPedroHenriquesB/Login-and-Register-System#readme"
 }

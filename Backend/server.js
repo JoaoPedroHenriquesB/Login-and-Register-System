@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const authRoutes = require('./routes/auth')
-const cors = require('cors')
+const authRoutes = require('./routes/auth');
+const cors = require('cors');
+const initDatabase = require('./Database/init');
 
-const app = express()
+const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Inicializar banco de dados
+initDatabase();
 
 // Configuração CORS para GitHub Pages e desenvolvimento local
 app.use(cors({
@@ -25,10 +29,22 @@ app.use(cors({
 app.use(bodyParser.json());
 app.use('/auth', authRoutes);
 
+// Rota de teste
 app.get('/', (req, res) => {
-    res.json({ message: 'API do sistema de login está rodando!', status: 'ok' });
+    res.json({ 
+        message: 'API do sistema de login está rodando!', 
+        status: 'ok',
+        timestamp: new Date().toISOString(),
+        environment: process.env.NODE_ENV || 'development'
+    });
+});
+
+// Rota de health check
+app.get('/health', (req, res) => {
+    res.json({ status: 'healthy', timestamp: new Date().toISOString() });
 });
 
 app.listen(PORT, () => {
-    console.log(`SERVIDOR RODANDO EM: http://localhost:${PORT}`)
+    console.log(`🚀 SERVIDOR RODANDO EM: http://localhost:${PORT}`);
+    console.log(`🌍 Ambiente: ${process.env.NODE_ENV || 'development'}`);
 });
