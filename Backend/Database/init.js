@@ -1,11 +1,17 @@
 const db = require('./db');
 
 const initDatabase = async () => {
-    const isProduction = process.env.NODE_ENV === 'production' || process.env.DB_URL;
+    // Usar a mesma lógica de detecção do db.js
+    const isProduction = !!process.env.DB_URL;
+    
+    console.log('🔧 Inicializando banco de dados...');
+    console.log('Ambiente:', isProduction ? 'PRODUÇÃO (PostgreSQL)' : 'DESENVOLVIMENTO (MySQL)');
     
     try {
         if (isProduction) {
-            // PostgreSQL - Criar tabela se não existir
+            // ===== POSTGRESQL (PRODUÇÃO) =====
+            console.log('🐘 Criando tabela no PostgreSQL...');
+            
             const createTableQuery = `
                 CREATE TABLE IF NOT EXISTS users (
                     id SERIAL PRIMARY KEY,
@@ -18,8 +24,11 @@ const initDatabase = async () => {
             
             await db.query(createTableQuery);
             console.log('✅ Tabela users criada/verificada no PostgreSQL');
+            
         } else {
-            // MySQL - Criar tabela se não existir
+            // ===== MYSQL (DESENVOLVIMENTO) =====
+            console.log('🐬 Criando tabela no MySQL...');
+            
             const createTableQuery = `
                 CREATE TABLE IF NOT EXISTS users (
                     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,16 +39,13 @@ const initDatabase = async () => {
                 );
             `;
             
-            await new Promise((resolve, reject) => {
-                db.query(createTableQuery, (err, result) => {
-                    if (err) reject(err);
-                    else resolve(result);
-                });
-            });
+            // MySQL com mysql2/promise
+            await db.query(createTableQuery);
             console.log('✅ Tabela users criada/verificada no MySQL');
         }
     } catch (error) {
-        console.error('❌ Erro ao inicializar banco de dados:', error);
+        console.error('❌ Erro ao inicializar banco de dados:', error.message);
+        console.error('Stack trace:', error.stack);
     }
 };
 
